@@ -1,0 +1,6 @@
+- name: installing Roboshop project
+  hosts: {{item}}
+  become: yes
+  roles:
+  - {{item}}
+  

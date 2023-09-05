@@ -3,21 +3,21 @@
     src: mongodb.repo
     dest: /etc/yum.repos.d/mongo.repo
 
-- name: install mongoDB
+- name: Install MongoDB
   ansible.builtin.yum:
     name: mongodb-org
     state: installed
-- name: start & enable Mongodb
+- name: start and enable mongodb
   ansible.builtin.service:
-    name : mongod
+    name: mongod
     state: started
     enabled: yes
-- name: Remote Connection Enable
+- name: enable remote connections to mongodb
   ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
-- name: Restart MongoDB
+- name: restart mongodb
   ansible.builtin.service:
-    name : mongod
+    name: mongod
     state: restarted
